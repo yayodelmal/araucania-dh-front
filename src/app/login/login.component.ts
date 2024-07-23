@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router'; // Importa Router
 import { FormsModule } from '@angular/forms';  // Importa FormsModule
 import { AuthService } from '../services/auth.service';
 
@@ -14,13 +14,13 @@ export class LoginComponent {
   email: string = '';
   password: string = '';
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}  // Inyecta Router
 
   async login(): Promise<void> {
     try {
       const response = await this.authService.login(this.email, this.password);
       this.authService.setToken(response.token);
-      alert('Login successful!');
+      this.router.navigate(['/protected']);  // Redirige al componente protected
     } catch (error) {
       alert('Login failed');
     }
