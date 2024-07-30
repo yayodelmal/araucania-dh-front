@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
+import { SidebarComponent } from "../sidebar/sidebar.component";
 
 @Component({
   selector: 'app-protected',
   standalone: true,
-  imports: [],
+  imports: [SidebarComponent],
   templateUrl: './protected.component.html',
   styleUrl: './protected.component.css'
 })
